@@ -1,8 +1,8 @@
-package project_1_dao;
+package project_1.dao;
 
 import java.util.List;
 
-import project_1_models.Role;
+import project_1.models.Role;
 
 public interface RoleDAO {
 	

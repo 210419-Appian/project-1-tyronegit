@@ -1,4 +1,4 @@
-package project_1_dao;
+package project_1.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,29 +7,29 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import project_1_models.AccountType;
-import project_1_utils.ConnectionUtil;
+import project_1.models.AccountStatus;
+import project_1.utils.ConnectionUtil;
 
-public class AccountTypeDAOImple implements AccountTypeDAO {
+public class AccountStatusDAOImpl implements AccountStatusDAO {
 
 	@Override
-	public List<AccountType> findAll() {
+	public List<AccountStatus> findAll() {
 		try (Connection conn = ConnectionUtil.getConnection()) {
 
-			String sql = "SELECT * FROM accounttype;";
+			String sql = "SELECT * FROM accountstatus;";
 
 			Statement statement = conn.createStatement();
 
 			ResultSet result = statement.executeQuery(sql);
 
-			List<AccountType> list = new ArrayList<>();
+			List<AccountStatus> list = new ArrayList<>();
 
 			while (result.next()) {
-				AccountType accounttype = new AccountType();
-				accounttype.setTypeId(result.getInt("typeid"));
-				accounttype.setType(result.getString("type"));
+				AccountStatus accountstatus = new AccountStatus();
+				accountstatus.setStatusId(result.getInt("statusid"));
+				accountstatus.setStatus(result.getString("status"));
 
-				list.add(accounttype);
+				list.add(accountstatus);
 			}
 
 			return list;
@@ -38,18 +38,17 @@ public class AccountTypeDAOImple implements AccountTypeDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 
 	@Override
-	public AccountType findByName(int typeid) {
+	public AccountStatus findByName(int statusid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean addAccountType(AccountType type) {
+	public boolean addAccountStatus(AccountStatus status) {
 		// TODO Auto-generated method stub
 		return false;
 	}

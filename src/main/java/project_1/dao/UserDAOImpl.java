@@ -1,4 +1,4 @@
-package project_1_dao;
+package project_1.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import project_1_models.User;
-import project_1_utils.ConnectionUtil;
+import project_1.models.User;
+import project_1.utils.ConnectionUtil;
 
 public class UserDAOImpl implements UserDAO {
 

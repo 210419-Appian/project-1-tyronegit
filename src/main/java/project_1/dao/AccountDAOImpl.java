@@ -1,4 +1,4 @@
-package project_1_dao;
+package project_1.dao;
 
 import java.beans.Statement;
 import java.sql.Connection;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import project_1_models.Account;
-import project_1_utils.ConnectionUtil;
+import project_1.models.Account;
+import project_1.utils.ConnectionUtil;
 
 public class AccountDAOImpl implements AccountDAO {
 

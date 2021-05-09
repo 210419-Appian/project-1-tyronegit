@@ -1,8 +1,8 @@
-package project_1_dao;
+package project_1.dao;
 
 import java.util.List;
 
-import project_1_models.User;
+import project_1.models.User;
 
 public interface UserDAO {
 	
