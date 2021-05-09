@@ -1,4 +1,4 @@
-package project_1.dao;
+package project_1.daos;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,53 +7,48 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import project_1.models.User;
+import project_1.models.AccountStatus;
 import project_1.utils.ConnectionUtil;
 
-public class UserDAOImpl implements UserDAO {
+public class AccountStatusDAOImpl implements AccountStatusDAO {
 
 	@Override
-	public List<User> findAll() {
+	public List<AccountStatus> findAll() {
 		try (Connection conn = ConnectionUtil.getConnection()) {
 
-			String sql = "SELECT * FROM userx;";
+			String sql = "SELECT * FROM accountstatus;";
 
 			Statement statement = conn.createStatement();
 
 			ResultSet result = statement.executeQuery(sql);
 
-			List<User> list = new ArrayList<>();
+			List<AccountStatus> list = new ArrayList<>();
 
 			while (result.next()) {
-				User user = new User();
-				user.setUsername(result.getString("username"));
-				user.setPassword(result.getString("password"));
-				user.setFirstName(result.getString("first_name"));
-				user.setLastName(result.getString("last_name"));
-				user.setEmail(result.getString("email"));
-				user.setRole(result.getString("role"));
-				
-				list.add(user);
+				AccountStatus accountstatus = new AccountStatus();
+				accountstatus.setStatusId(result.getInt("statusid"));
+				accountstatus.setStatus(result.getString("status"));
 
+				list.add(accountstatus);
 			}
 
 			return list;
+		
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		}
-
 		return null;
 	}
 
 	@Override
-	public User findByName(int userid) {
+	public AccountStatus findByName(int statusid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean addUser(User user) {
+	public boolean addAccountStatus(AccountStatus status) {
 		// TODO Auto-generated method stub
 		return false;
 	}

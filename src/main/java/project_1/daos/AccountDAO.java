@@ -1,4 +1,4 @@
-package project_1.dao;
+package project_1.daos;
 
 import java.util.List;
 
