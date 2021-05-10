@@ -12,10 +12,16 @@ public class Account implements Serializable {
 
 	private int accountId; // primary key
 	private double balance; // not null
-	private int status;
-	private int type;
+	private AccountStatus status;
+	private AccountType type;
+	
+	
+	public Account() {
+		super();
+	}
 
-	public Account(int accountId, double balance, int status, int type) {
+
+	public Account(int accountId, double balance, AccountStatus status, AccountType type) {
 		super();
 		this.accountId = accountId;
 		this.balance = balance;
@@ -23,45 +29,52 @@ public class Account implements Serializable {
 		this.type = type;
 	}
 
-	public Account() {
-		super();
-	}
 
 	public int getAccountId() {
 		return accountId;
 	}
 
+
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
+
 
 	public double getBalance() {
 		return balance;
 	}
 
+
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
-	public int getStatus() {
+
+	public AccountStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(int i) {
-		this.status = i;
+
+	public boolean setStatus(AccountStatus status) {
+		this.status = status;
+		return false;
 	}
 
-	public int getType() {
+
+	public AccountType getType() {
 		return type;
 	}
 
-	public void setType(int i) {
-		this.type = i;
+
+	public void setType(AccountType type) {
+		this.type = type;
 	}
+
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -71,10 +84,11 @@ public class Account implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(balance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + status;
-		result = prime * result + type;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -89,17 +103,28 @@ public class Account implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
 			return false;
-		if (status != other.status)
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
-		if (type != other.type)
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
 			return false;
 		return true;
 	}
+
 
 	@Override
 	public String toString() {
 		return "Account [accountId=" + accountId + ", balance=" + balance + ", status=" + status + ", type=" + type
 				+ "]";
 	}
+	
+	
+	
+	
 
 }

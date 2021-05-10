@@ -45,9 +45,8 @@ public class UserDAOImpl implements UserDAO {
 
 		return null;
 	}
-
 	@Override
-	public User findByName(int userid) {
+	public UserDAO findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

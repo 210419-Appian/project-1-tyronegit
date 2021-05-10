@@ -7,6 +7,6 @@ import project_1.models.User;
 public interface UserDAO {
 	
 	List<User> findAll();
-	User findByName(int userid);
+	UserDAO findByName(Object object);
 	boolean addUser(User user);
 }
